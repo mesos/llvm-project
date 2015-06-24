@@ -70,6 +70,11 @@ extern volatile int AndroidModuleAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED AndroidModuleAnchorDestination =
     AndroidModuleAnchorSource;
 
+// This anchor is used to force the linker to link the MesosModule.
+extern volatile int MesosModuleAnchorSource;
+static int LLVM_ATTRIBUTE_UNUSED MesosModuleAnchorDestination =
+    MesosModuleAnchorSource;
+
 // This anchor is used to force the linker to link the MiscModule.
 extern volatile int MiscModuleAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED MiscModuleAnchorDestination =
