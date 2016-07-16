@@ -10,7 +10,9 @@
 #include "../ClangTidy.h"
 #include "../ClangTidyModule.h"
 #include "../ClangTidyModuleRegistry.h"
+
 #include "NamespaceCommentCheck.h"
+#include "ThisCaptureCheck.h"
 
 namespace clang {
 namespace tidy {
@@ -21,6 +23,7 @@ public:
   void addCheckFactories(ClangTidyCheckFactories &CheckFactories) override {
     CheckFactories.registerCheck<NamespaceCommentCheck>(
         "mesos-namespace-comments");
+    CheckFactories.registerCheck<ThisCaptureCheck>("mesos-this-capture");
   }
 };
 
