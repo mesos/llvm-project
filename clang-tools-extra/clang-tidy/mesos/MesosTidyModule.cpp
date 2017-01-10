@@ -11,7 +11,7 @@
 #include "../ClangTidyModule.h"
 #include "../ClangTidyModuleRegistry.h"
 
-#include "FlagsCheck.h"
+#include "FlagsInheritanceCheck.h"
 #include "NamespaceCommentCheck.h"
 #include "ThisCaptureCheck.h"
 
@@ -22,8 +22,8 @@ namespace mesos {
 class MesosModule : public ClangTidyModule {
 public:
   void addCheckFactories(ClangTidyCheckFactories &CheckFactories) override {
-    CheckFactories.registerCheck<FlagsCheck>(
-        "mesos-flags");
+    CheckFactories.registerCheck<FlagsInheritanceCheck>(
+        "mesos-flags-inheritance");
     CheckFactories.registerCheck<NamespaceCommentCheck>(
         "mesos-namespace-comments");
     CheckFactories.registerCheck<ThisCaptureCheck>("mesos-this-capture");

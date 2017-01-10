@@ -1,4 +1,4 @@
-//===--- FlagsCheck.cpp - clang-tidy---------------------------------------===//
+//===--- FlagsInheritanceCheck.cpp - clang-tidy----------------------------===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -7,7 +7,7 @@
 //
 //===----------------------------------------------------------------------===//
 
-#include "FlagsCheck.h"
+#include "FlagsInheritanceCheck.h"
 #include "clang/AST/ASTContext.h"
 #include "clang/ASTMatchers/ASTMatchFinder.h"
 
@@ -17,8 +17,8 @@ namespace clang {
 namespace tidy {
 namespace mesos {
 
-void FlagsCheck::registerMatchers(MatchFinder *Finder) {
-  Finder->addMatcher(cxxRecordDecl(isDerivedFrom("FlagsBase")).bind("flags"),
+void FlagsInheritanceCheck::registerMatchers(MatchFinder *Finder) {
+  Finder->addMatcher(cxxRecordDecl(isDerivedFrom("FlagsBase")).bind("flags-inheritance"),
                      this);
 }
 
@@ -31,8 +31,8 @@ bool isDerivedFromFlagsBase(const CXXRecordDecl &decl) {
 }
 }
 
-void FlagsCheck::check(const MatchFinder::MatchResult &Result) {
-  const auto *derivedDecl = Result.Nodes.getNodeAs<CXXRecordDecl>("flags");
+void FlagsInheritanceCheck::check(const MatchFinder::MatchResult &Result) {
+  const auto *derivedDecl = Result.Nodes.getNodeAs<CXXRecordDecl>("flags-inheritance");
 
   // We explicitly iterate the bases here so we can emit diagnostic pointing to
   // the exact inheritance introducing the issue.

@@ -1,4 +1,4 @@
-//===--- FlagsCheck.h - clang-tidy-------------------------------*- C++ -*-===//
+//===--- FlagsInheritanceCheck.h - clang-tidy-------------------------------*- C++ -*-===//
 //
 //                     The LLVM Compiler Infrastructure
 //
@@ -7,8 +7,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MESOS_FLAGS_H
-#define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MESOS_FLAGS_H
+#ifndef LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MESOS_FLAGS_INHERITANCE_H
+#define LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MESOS_FLAGS_INHERITANCE_H
 
 #include "../ClangTidy.h"
 
@@ -19,10 +19,10 @@ namespace mesos {
 /// FIXME: Write a short description.
 ///
 /// For the user-facing documentation see:
-/// http://clang.llvm.org/extra/clang-tidy/checks/mesos-flags.html
-class FlagsCheck : public ClangTidyCheck {
+/// http://clang.llvm.org/extra/clang-tidy/checks/mesos-flags-inheritance.html
+class FlagsInheritanceCheck : public ClangTidyCheck {
 public:
-  FlagsCheck(StringRef Name, ClangTidyContext *Context)
+  FlagsInheritanceCheck(StringRef Name, ClangTidyContext *Context)
       : ClangTidyCheck(Name, Context) {}
   void registerMatchers(ast_matchers::MatchFinder *Finder) override;
   void check(const ast_matchers::MatchFinder::MatchResult &Result) override;
@@ -32,4 +32,4 @@ public:
 } // namespace tidy
 } // namespace clang
 
-#endif // LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MESOS_FLAGS_H
+#endif // LLVM_CLANG_TOOLS_EXTRA_CLANG_TIDY_MESOS_FLAGS_INHERITANCE_H
