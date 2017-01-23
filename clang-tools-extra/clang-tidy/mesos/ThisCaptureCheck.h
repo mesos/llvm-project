@@ -16,7 +16,7 @@ namespace clang {
 namespace tidy {
 namespace mesos {
 
-/// FIXME: Write a short description.
+/// Catch potentially dangerous use of lambdas capturing `this`.
 ///
 /// For the user-facing documentation see:
 /// http://clang.llvm.org/extra/clang-tidy/checks/mesos-this-capture.html
