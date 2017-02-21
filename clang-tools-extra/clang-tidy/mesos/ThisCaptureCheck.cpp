@@ -70,6 +70,13 @@ void ThisCaptureCheck::registerMatchers(MatchFinder *Finder) {
           on(hasType(cxxRecordDecl(hasName("Future")))),
           hasAnyArgument(anyOf(lambdaCapturingThis, lambdaCapturingThisRef))),
       this);
+
+  // Matcher for `process::loop`.
+  Finder->addMatcher(callExpr(callee(namedDecl(hasName("process::loop"))),
+                              hasAnyArgument(anyOf(
+                                  materializeTemporaryExpr(lambdaCapturingThis),
+                                  lambdaCapturingThisRef))),
+                     this);
 }
 
 void ThisCaptureCheck::check(const MatchFinder::MatchResult &Result) {
