@@ -99,9 +99,6 @@ void NamespaceCommentCheck::check(const MatchFinder::MatchResult &Result) {
       StringRef NamespaceNameInComment = Groups.size() > 5 ? Groups[5] : "";
       StringRef Anonymous = Groups.size() > 3 ? Groups[3] : "";
 
-      llvm::errs() << "NOPE: " << ND->getNameAsString() << " "
-                   << NamespaceNameInComment << " " << Anonymous;
-
       // Check if the namespace in the comment is the same.
       if ((ND->isAnonymousNamespace() && NamespaceNameInComment.empty()) ||
           (ND->getNameAsString() == NamespaceNameInComment &&
