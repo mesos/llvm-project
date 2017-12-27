@@ -71,12 +71,16 @@ void ThisCaptureCheck::registerMatchers(MatchFinder *Finder) {
           hasAnyArgument(anyOf(lambdaCapturingThis, lambdaCapturingThisRef))),
       this);
 
-  // Matcher for `process::loop`.
-  Finder->addMatcher(callExpr(callee(namedDecl(hasName("process::loop"))),
-                              hasAnyArgument(anyOf(
-                                  materializeTemporaryExpr(lambdaCapturingThis),
-                                  lambdaCapturingThisRef))),
-                     this);
+  // Matcher for `process::loop`. This function has two overloads, a
+  // two-argument version taking just lambdas and a three-argument one also
+  // taking a PID to dispatch to. We only check the two-argument version and
+  // assume that the version taking a PID is internally sound.
+  Finder->addMatcher(
+      callExpr(
+          argumentCountIs(2), callee(namedDecl(hasName("process::loop"))),
+          hasAnyArgument(anyOf(materializeTemporaryExpr(lambdaCapturingThis),
+                               lambdaCapturingThisRef))),
+      this);
 }
 
 void ThisCaptureCheck::check(const MatchFinder::MatchResult &Result) {
