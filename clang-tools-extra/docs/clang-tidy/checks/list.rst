@@ -185,6 +185,7 @@ Clang-Tidy Checks
    `llvm-prefer-register-over-unsigned <llvm-prefer-register-over-unsigned.html>`_, "Yes"
    `llvm-twine-local <llvm-twine-local.html>`_, "Yes"
    `mesos-flags-inheritance <mesos-flags-inheritance.html>`_, "Yes"
+   `mesos-redundant-get <mesos-redundant-get.html>`_, "Yes"
    `mesos-this-capture <mesos-this-capture.html>`_,
    `misc-definitions-in-headers <misc-definitions-in-headers.html>`_, "Yes"
    `misc-misplaced-const <misc-misplaced-const.html>`_,
