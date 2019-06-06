@@ -61,9 +61,9 @@ void FlagsInheritanceCheck::check(const MatchFinder::MatchResult &Result) {
       continue;
     }
 
-    diag(base.getBeginLoc(), "'%0' does not inherit virtually from '%1'%2")
+    diag(base.getBaseTypeLoc(), "'%0' does not inherit virtually from '%1'%2")
         << derivedDecl->getName() << baseDecl->getName()
-        << FixItHint::CreateInsertion(base.getEndLoc(), "virtual ")
+        << FixItHint::CreateInsertion(base.getBaseTypeLoc(), "virtual ")
         << (baseDecl->getName() != "FlagsBase"
                 ? " which inherits from 'FlagsBase'"
                 : "");

@@ -13,8 +13,8 @@ struct B : A {};
 // CHECK-FIXES: {{^}}struct B : virtual A {};{{$}}
 
 class C : public flags::FlagsBase {};
-// CHECK-MESSAGES: :[[@LINE-1]]:11: warning: 'C' does not inherit virtually from 'FlagsBase' [mesos-flags-inheritance]
-// CHECK-FIXES: {{^}}class C : virtual public flags::FlagsBase {};{{$}}
+// CHECK-MESSAGES: :[[@LINE-1]]:18: warning: 'C' does not inherit virtually from 'FlagsBase' [mesos-flags-inheritance]
+// CHECK-FIXES: {{^}}class C : public virtual flags::FlagsBase {};{{$}}
 
 struct D : virtual flags::FlagsBase {};
 struct E : virtual C {};
